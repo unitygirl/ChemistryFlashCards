@@ -55,8 +55,97 @@ var questions = [
         "What is A T?": [
             "astatine"
         ]
-    }
-    
+    },
+    {
+        "What is B A?": [
+            "barium"
+        ]
+    },
+    {
+        "What is B K?": [
+            "berkelium"
+        ]
+    },
+    {
+        "What is B E?": [
+            "beryllium"
+        ]
+    },
+    {
+        "What is B I?": [
+            "bismuth"
+        ]
+    },
+    {
+        "What is B H?": [
+            "bohrium"
+        ]
+    },
+    {
+        "What is B?": [
+            "boron"
+        ]
+    },
+    {
+        "What is B R ?": [
+            "bromine"
+        ]
+    },
+    {
+        "What is C D ?": [
+            "cadmium"
+        ]
+    },
+    {
+        "What is C A ?": [
+            "calcium"
+        ]
+    },
+    {
+        "What is C F ?": [
+            "californium"
+        ]
+    },
+    {
+        "What is C ?": [
+            "carbon"
+        ]
+    },
+    {
+        "What is C E ?": [
+            "cerium"
+        ]
+    },
+    {
+        "What is C S ?": [
+            "cesium"
+        ]
+    },
+    {
+        "What is C L ?": [
+            "chlorine"
+        ]
+    },
+    {
+        "What is C R ?": [
+            "chromium"
+        ]
+    },
+    {
+        "What is C O ?": [
+            "cobalt"
+        ]
+    },
+    {
+        "What is C U ?": [
+            "copper"
+        ]
+    },
+    {
+        "What is C M?": [
+            "Curium"
+        ]
+    },
 ];
 
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
