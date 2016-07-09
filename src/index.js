@@ -271,8 +271,8 @@ var CARD_TITLE = "Chemistry Flash Cards"; // Be sure to change this for your ski
 
 function getWelcomeResponse(callback) {
     var sessionAttributes = {},
-        speechOutput = "Let's learn about elements in the periodic table. I will ask you about " + GAME_LENGTH.toString()
-            + " elements, try to get as many right as you can. Just say the name of the element. Let's begin. ",
+        speechOutput = "Let's test your skills with FlashCards. I will ask you " + GAME_LENGTH.toString()
+            + " questions, try to get as many right as you can. Just say the answer. Let's begin. ",
         shouldEndSession = false,
 
         gameQuestions = populateGameQuestions(),
@@ -488,11 +488,12 @@ function handleRepeatRequest(intent, session, callback) {
 }
 
 function handleGetHelpRequest(intent, session, callback) {
+    var sessionAttributes = {}
     var CARD_TITLE = "Flash Cards";
-    var speechOutput = "Welcome to the Flash Cards Skill. You can begin a game by saying start a new game, or, you can say exit... What can I help you with?";
+    var speechOutput = "You can begin a game by saying start a new game, or, you can say exit... What can I help you with?";
     var repromptText = "What can I help you with?";
     
-     callback(buildSpeechletResponse(CARD_TITLE, speechOutput, repromptText, false));
+    callback(sessionAttributes, buildSpeechletResponse(CARD_TITLE, speechOutput, repromptText, false));
 }
 
 function handleFinishSessionRequest(intent, session, callback) {
