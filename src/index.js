@@ -233,9 +233,7 @@ function onIntent(intentRequest, session, callback) {
         handleAnswerRequest(intent, session, callback);
     } else if ("AnswerOnlyIntent" === intentName) {
         handleAnswerRequest(intent, session, callback);
-    } else if ("DontKnowIntent" === intentName) {
-        handleAnswerRequest(intent, session, callback);
-    } else if ("AMAZON.YesIntent" === intentName) {
+    }  else if ("AMAZON.YesIntent" === intentName) {
         handleAnswerRequest(intent, session, callback);
     } else if ("AMAZON.NoIntent" === intentName) {
         handleAnswerRequest(intent, session, callback);
@@ -366,7 +364,7 @@ function populateRoundAnswers(gameQuestionIndexes, correctAnswerIndex, correctAn
     return answers;
 }
 
-function handleAnswerRequest(intent, session, callback) {
+/*function handleAnswerRequest(intent, session, callback) {
     // Get the answers for a given question, and place the correct answer at the spot marked by the
     // correctAnswerTargetLocation variable. Note that you can have as many answers as you want but
     // only ANSWER_COUNT will be selected.
@@ -399,6 +397,7 @@ function handleAnswerRequest(intent, session, callback) {
     answers[correctAnswerTargetLocation] = temp;
     return answers;
 }
+*/
 
 function handleAnswerRequest(intent, session, callback) {
     var speechOutput = "";
@@ -443,7 +442,7 @@ function handleAnswerRequest(intent, session, callback) {
         if (currentQuestionIndex == GAME_LENGTH - 1) {
             speechOutput = userGaveUp ? "" : "That answer is ";
             speechOutput += speechOutputAnalysis + "You got " + currentScore.toString() + " out of "
-                + GAME_LENGTH.toString() + " questions correct. Thank you for learning the Periodic Table with Alexa!";
+                + GAME_LENGTH.toString() + " questions correct. Thank you for learning Flash Cards with Alexa!";
             callback(session.attributes,
                 buildSpeechletResponse(CARD_TITLE, speechOutput, "", true));
         } else {
@@ -489,29 +488,17 @@ function handleRepeatRequest(intent, session, callback) {
 }
 
 function handleGetHelpRequest(intent, session, callback) {
-    // Provide a help prompt for the user, explaining how the game is played. Then, continue the game
-    // if there is one in progress, or provide the option to start another one.
-
-    // Set a flag to track that we're in the Help state.
-    session.attributes.userPromptedToContinue = true;
-
-    // Do not edit the help dialogue. This has been created by the Alexa team to demonstrate best practices.
-
-    var speechOutput = "I will ask you to provide the name of a, element in the periodic table. I will provide the abbreviation, you will need to provide the name. "
-        + "For example, If the element is A R, you would say Argon. To start a new game at any time, say, start new game. "
-        + "To repeat the last element, say, repeat. "
-        + "Would you like to keep playing?",
-        repromptText = "To give an answer, respond with the correct element. "
-        + "Would you like to keep playing?";
-        var shouldEndSession = false;
-    callback(session.attributes,
-        buildSpeechletResponseWithoutCard(speechOutput, repromptText, shouldEndSession));
+    var CARD_TITLE = "Flash Cards";
+    var speechOutput = "Welcome to the Flash Cards Skill. You can begin a game by saying start a new game, or, you can say exit... What can I help you with?";
+    var repromptText = "What can I help you with?";
+    
+     callback(buildSpeechletResponse(CARD_TITLE, speechOutput, repromptText, false));
 }
 
 function handleFinishSessionRequest(intent, session, callback) {
     // End the session with a "Good bye!" if the user wants to quit the game
     callback(session.attributes,
-        buildSpeechletResponseWithoutCard("Thanks for playing Chemistry Flash Cards!", "", true));
+        buildSpeechletResponseWithoutCard("Thanks for playing Flash Cards!", "", true));
 }
 
 function isAnswerSlotValid(intent) {
